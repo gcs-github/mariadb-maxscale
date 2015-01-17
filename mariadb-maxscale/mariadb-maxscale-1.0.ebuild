@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header$
 
@@ -9,10 +9,8 @@ inherit user eutils git-r3
 EGIT_REPO_URI="https://github.com/mariadb-corporation/MaxScale.git"
 EGIT_BRANCH="release-1.0GA"
 SRC_URI=""
-KEYWORDS=""
-SLOT="0"
 
-DESCRIPTION="MaxScale is an intelligent proxy"
+DESCRIPTION="MaxScale is an intelligent mysql proxy"
 HOMEPAGE="https://github.com/mariadb-corporation/MaxScale"
 
 LICENSE="Apache-2.0"
