@@ -1,0 +1,5 @@
+export MAXSCALE_USER="maxscale"
+export MAXSCALE_DAEMON="/opt/maxscale/bin/maxscale"
+export MAXSCALE_HOME=/opt/maxscale
+export MAXSCALE_PIDFILE=$MAXSCALE_HOME/log/maxscale.pid
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$MAXSCALE_HOME/lib:/usr/lib64/mysql
