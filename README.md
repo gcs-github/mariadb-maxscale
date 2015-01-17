@@ -1,1 +1,1 @@
-# mariadb-maxscale
+#Gentoo Ebuild for mariadb-maxscale
