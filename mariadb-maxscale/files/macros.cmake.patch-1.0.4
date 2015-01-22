@@ -1,0 +1,64 @@
+--- MaxScale-1.0.4-GA/macros.cmake	2015-01-09 04:10:05.000000000 +0100
++++ macros.cmake-1.0.4	2015-01-22 15:44:23.680490584 +0100
+@@ -18,7 +18,7 @@
+ macro(set_variables)
+ 
+   # Installation directory
+-  set(INSTALL_DIR "/usr/local/skysql/maxscale/" CACHE PATH "MaxScale installation directory.")
++  set(INSTALL_DIR "/opt/maxscale/" CACHE PATH "MaxScale installation directory.")
+   
+   # Build type
+   set(BUILD_TYPE "None" CACHE STRING "Build type, possible values are:None, Debug, Optimized.")
+@@ -48,7 +48,7 @@
+   set(TEST_PASSWORD "maxpwd" CACHE STRING "password of MaxScale user")
+   
+   # Use static version of libmysqld
+-  set(STATIC_EMBEDDED TRUE CACHE BOOL "Use static version of libmysqld")
++  set(STATIC_EMBEDDED FALSE CACHE BOOL "Use static version of libmysqld")
+   
+   # Build RabbitMQ components
+   set(BUILD_RABBITMQ FALSE CACHE BOOL "Build RabbitMQ components")
+@@ -57,7 +57,7 @@
+   set(GCOV FALSE CACHE BOOL "Use gcov build flags")
+ 
+   # Install init.d scripts and ldconf configuration files
+-  set(INSTALL_SYSTEM_FILES TRUE CACHE BOOL "Install init.d scripts and ldconf configuration files")
++  set(INSTALL_SYSTEM_FILES FALSE CACHE BOOL "Install init.d scripts and ldconf configuration files")
+ 
+   # Build tests
+   set(BUILD_TESTS FALSE CACHE BOOL "Build tests")
+@@ -200,20 +200,20 @@
+ 
+ 
+   # Check which init.d script to install
+-  find_file(RPM_FNC functions PATHS /etc/rc.d/init.d)
+-  if(${RPM_FNC} MATCHES "RPM_FNC-NOTFOUND")
+-	find_file(DEB_FNC init-functions PATHS /lib/lsb)
+-	if(${DEB_FNC} MATCHES "DEB_FNC-NOTFOUND")
+-	  set(DEPS_OK FALSE CACHE BOOL "If all the dependencies were found.")
+-	  message(FATAL_ERROR "Cannot find required init-functions in /lib/lsb/ or /etc/rc.d/init.d/, please confirm that your system files are OK.")
+-	else()
+-	  set(DEB_BASED TRUE CACHE BOOL "If init.d script uses /lib/lsb/init-functions instead of /etc/rc.d/init.d/functions.")
+-	endif()
+-  else()
+-	set(DEB_BASED FALSE CACHE BOOL "If init.d script uses /lib/lsb/init-functions instead of /etc/rc.d/init.d/functions.")
+-  endif()
+-  unset(DEB_FNC)
+-  unset(RPM_FNC)
++#  find_file(RPM_FNC functions PATHS /etc/rc.d/init.d)
++#  if(${RPM_FNC} MATCHES "RPM_FNC-NOTFOUND")
++#	find_file(DEB_FNC init-functions PATHS /lib/lsb)
++#	if(${DEB_FNC} MATCHES "DEB_FNC-NOTFOUND")
++#	  set(DEPS_OK FALSE CACHE BOOL "If all the dependencies were found.")
++#	  message(FATAL_ERROR "Cannot find required init-functions in /lib/lsb/ or /etc/rc.d/init.d/, please confirm that your system files are OK.")
++#	else()
++#	  set(DEB_BASED TRUE CACHE BOOL "If init.d script uses /lib/lsb/init-functions instead of /etc/rc.d/init.d/functions.")
++#	endif()
++#  else()
++#	set(DEB_BASED FALSE CACHE BOOL "If init.d script uses /lib/lsb/init-functions instead of /etc/rc.d/init.d/functions.")
++#  endif()
++#  unset(DEB_FNC)
++#  unset(RPM_FNC)
+ 
+   #Find the MySQL client library
+ #  find_library(MYSQLCLIENT_LIBRARIES NAMES mysqlclient PATH_SUFFIXES mysql mariadb)
