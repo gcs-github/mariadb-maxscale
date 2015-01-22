@@ -7,7 +7,7 @@ EAPI=5
 inherit user eutils git-r3
 
 EGIT_REPO_URI="https://github.com/mariadb-corporation/MaxScale.git"
-EGIT_BRANCH="release-1.0GA"
+EGIT_BRANCH=""
 SRC_URI=""
 
 DESCRIPTION="MaxScale is an intelligent mysql proxy"
