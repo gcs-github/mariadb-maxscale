@@ -1,17 +1,6 @@
---- /var/tmp/portage/dev-db/mariadb-maxscale-1.0/work/mariadb-maxscale-1.0/macros.cmake	2015-01-16 20:30:17.645899689 +0100
-+++ /usr/src/MaxScale/macros.cmake	2015-01-16 20:28:21.765905728 +0100
-@@ -9,16 +9,16 @@
-   #MaxScale version number
-   set(MAXSCALE_VERSION_MAJOR "1")
-   set(MAXSCALE_VERSION_MINOR "0")
--  set(MAXSCALE_VERSION_PATCH "4") 
-+  set(MAXSCALE_VERSION_PATCH "5") 
-   set(MAXSCALE_VERSION_NUMERIC "${MAXSCALE_VERSION_MAJOR}.${MAXSCALE_VERSION_MINOR}.${MAXSCALE_VERSION_PATCH}")
--  set(MAXSCALE_VERSION "${MAXSCALE_VERSION_MAJOR}.${MAXSCALE_VERSION_MINOR}.${MAXSCALE_VERSION_PATCH}-stable")
-+  set(MAXSCALE_VERSION "${MAXSCALE_VERSION_MAJOR}.${MAXSCALE_VERSION_MINOR}.${MAXSCALE_VERSION_PATCH}-unstable")
- 
- endmacro()
- 
+--- MaxScale/macros.cmake       2015-01-25 17:34:22.694660006 +0100
++++ macros.cmake        2015-01-22 17:03:51.131425451 +0100
+@@ -18,7 +18,7 @@
  macro(set_variables)
  
    # Installation directory
@@ -45,30 +34,30 @@
 -  # Check which init.d script to install
 -  find_file(RPM_FNC functions PATHS /etc/rc.d/init.d)
 -  if(${RPM_FNC} MATCHES "RPM_FNC-NOTFOUND")
--	find_file(DEB_FNC init-functions PATHS /lib/lsb)
--	if(${DEB_FNC} MATCHES "DEB_FNC-NOTFOUND")
--	  set(DEPS_OK FALSE CACHE BOOL "If all the dependencies were found.")
--	  message(FATAL_ERROR "Cannot find required init-functions in /lib/lsb/ or /etc/rc.d/init.d/, please confirm that your system files are OK.")
--	else()
--	  set(DEB_BASED TRUE CACHE BOOL "If init.d script uses /lib/lsb/init-functions instead of /etc/rc.d/init.d/functions.")
--	endif()
+-       find_file(DEB_FNC init-functions PATHS /lib/lsb)
+-       if(${DEB_FNC} MATCHES "DEB_FNC-NOTFOUND")
+-         set(DEPS_OK FALSE CACHE BOOL "If all the dependencies were found.")
+-         message(FATAL_ERROR "Cannot find required init-functions in /lib/lsb/ or /etc/rc.d/init.d/, please confirm that your system files are OK.")
+-       else()
+-         set(DEB_BASED TRUE CACHE BOOL "If init.d script uses /lib/lsb/init-functions instead of /etc/rc.d/init.d/functions.")
+-       endif()
 -  else()
--	set(DEB_BASED FALSE CACHE BOOL "If init.d script uses /lib/lsb/init-functions instead of /etc/rc.d/init.d/functions.")
+-       set(DEB_BASED FALSE CACHE BOOL "If init.d script uses /lib/lsb/init-functions instead of /etc/rc.d/init.d/functions.")
 -  endif()
 -  unset(DEB_FNC)
 -  unset(RPM_FNC)
 +  #  # Check which init.d script to install
 +  #  find_file(RPM_FNC functions PATHS /etc/init.d)
 +  #if(${RPM_FNC} MATCHES "RPM_FNC-NOTFOUND")
-+  # 	find_file(DEB_FNC init-functions PATHS /lib/lsb)
-+  # 	if(${DEB_FNC} MATCHES "DEB_FNC-NOTFOUND")
-+  # 	  set(DEPS_OK FALSE CACHE BOOL "If all the dependencies were found.")
-+  #	  message(FATAL_ERROR "Cannot find required init-functions in /lib/lsb/ or /etc/rc.d/init.d/, please confirm that your system files are OK.")
-+  # 	else()
-+  #	  set(DEB_BASED TRUE CACHE BOOL "If init.d script uses /lib/lsb/init-functions instead of /etc/rc.d/init.d/functions.")
-+  # 	endif()
++  #    find_file(DEB_FNC init-functions PATHS /lib/lsb)
++  #    if(${DEB_FNC} MATCHES "DEB_FNC-NOTFOUND")
++  #      set(DEPS_OK FALSE CACHE BOOL "If all the dependencies were found.")
++  #      message(FATAL_ERROR "Cannot find required init-functions in /lib/lsb/ or /etc/rc.d/init.d/, please confirm that your system files are OK.")
++  #    else()
++  #      set(DEB_BASED TRUE CACHE BOOL "If init.d script uses /lib/lsb/init-functions instead of /etc/rc.d/init.d/functions.")
++  #    endif()
 +  #  else()
-+  # 	set(DEB_BASED FALSE CACHE BOOL "If init.d script uses /lib/lsb/init-functions instead of /etc/rc.d/init.d/functions.")
++  #    set(DEB_BASED FALSE CACHE BOOL "If init.d script uses /lib/lsb/init-functions instead of /etc/rc.d/init.d/functions.")
 +  #endif()
 +  #unset(DEB_FNC)
 +  #unset(RPM_FNC)
