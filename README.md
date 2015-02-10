@@ -1,1 +1,1 @@
-#Gentoo Ebuild for mariadb-maxscale
+#Gentoo Portage Overlay for mariadb-maxscale
